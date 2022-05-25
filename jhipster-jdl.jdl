@@ -1,0 +1,37 @@
+
+
+entity Jobs {
+	title String required,
+    slug String required,
+    featureImage String,
+    validFrom ZonedDateTime,
+    validThrough ZonedDateTime,
+    status JobStatus,
+    createdBy Long,
+    createdDate ZonedDateTime,
+    updatedDate ZonedDateTime,
+    updatedBy Long
+}
+
+entity Category {
+	name String required,
+    createBy Long,
+    createdDate ZonedDateTime,
+    updatedDate ZonedDateTime,
+    updatedBy Long
+}
+
+relationship OneToMany {
+  Category{job} to Jobs
+}
+
+enum JobStatus {
+	DRAFT, TO BE APPROVED, PUBLISHED, TRASHED
+}
+
+paginate * with pagination
+
+dto * with mapstruct
+
+service all with serviceImpl
+    
